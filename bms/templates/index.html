@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+<title>查看书籍</title>
+
+{% endblock title %}
+
+{% block content %}
+<h3>查看书籍</h3>
+<table class="table table-hover table-striped ">
+                <thead>
+                     <tr>
+                         <th>名称</th>
+                         <th>价格</th>
+                         <th>出版日期</th>
+                         <th>出版社</th>
+                         <th>是否出版</th>
+                     </tr>
+                </thead>
+                <tbody>
+                      {% for book in book_list %}
+                      <tr>
+                          <td>{{ book.title }}</td>
+                          <td>{{ book.price }}</td>
+                          <td>{{ book.pub_date|date:"Y-m-d" }}</td>
+                          <td>{{ book.publish }}</td>
+                          <td>
+                              {% if book.is_pub %}
+                              已出版
+                              {% else %}
+                              未出版
+                              {% endif %}
+                          </td>
+                      </tr>
+                      {% endfor %}
+
+                </tbody>
+            </table>
+
+{% endblock content %}
